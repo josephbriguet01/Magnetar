@@ -4,9 +4,13 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, Août 2018
+ * Written by Briguet, August 2018
  */
 package org.tcp;
+
+
+
+import network.IPv4;
 
 
 
@@ -26,9 +30,9 @@ public class Client extends TCP{
      * @param host Correspond à l'adresse ip du serveur
      * @param port Correspond au port du serveur
      */
-    public Client(Identity identity, String host, int port) {
+    public Client(Identity identity, IPv4 host, int port) {
         super(identity, port);
-        this.host       = host;
+        this.host       = host.getIpv4();
         this.connected  = false;
     }
     // </editor-fold>

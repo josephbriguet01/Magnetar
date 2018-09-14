@@ -1,4 +1,4 @@
-Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+﻿Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
 # Magnetar
 
 ### Introduction
@@ -197,4 +197,35 @@ client.addIResultATBC(new IResultATBC(){
         System.out.println("J'ai été refusé de connexion avec le code: " + code);
     }
 });
+```
+
+### Détecter un/des serveur(s) sur le réseau
+Il arrive parfois qu'il soit nécessaire de détecter des serveurs sur le réseau. Tout simplement parce que l'on ne possède ni l'adresse IP, ni le port d'écoute du serveur. Pour faire en sorte qu'un serveur réel soit vu sur le réseau avec un nom... Il faut activer sa propagation. En faisant ceci, un autre serveur se crée automatiquement (celui de propagation). Le client à plus qu'à scanner le réseau. Il découvre le serveur de propagation. Il demande l'adresse IP, le port et le nom du serveur réel au serveur de propagation. Celui-ci envoie toutes les informations du serveur réel au client. Et de cette manière le client possède les paramètres de connexion pour pouvoir se connecter au serveur réel.
+
+##### Au niveau serveur
+```java
+// Pour propager l'identification du serveur réel sur le réseau, il nous faut déjà posséder le serveur réel (Server s = new Server(...)). Puis on active la propagation.
+s.startPropagation("Mon serveur", 14863);
+
+// Pour stopper une propagation il suffit de faire
+s.stopPropagation();
+```
+
+##### Au niveau client
+On cherche à détecter les serveurs qui propage leurs informations sur le port 14863
+```java
+// On crée un objet DetectServer
+DetectServer ds = new DetectServer();
+
+//On scanne le réseau LAN et on récupère la liste des serveurs qui propage leurs informations sur le port 14863
+IdentificationServer[] iss = ds.scanNetwork(new IPv4("192.168.0.0"), 14863);
+
+// On affiche les informations des serveurs détectés
+for(int i=0;i<iss.length;i++){
+    System.out.println(iss[i]);
+}
+```
+Et on obtient le résultat suivant:
+```
+IdentificationServer{ipServer=192.168.0.15, nameServer=Mon Serveur, portServer=15948}
 ```

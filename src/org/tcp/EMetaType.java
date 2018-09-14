@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, Août 2018
+ * Written by Briguet, August 2018
  */
 package org.tcp;
 
@@ -12,7 +12,8 @@ package org.tcp;
 
 /**
  * Cette classe permet d'énumérer les type de meta requête envoyé entre client serveur
- * @author jbriguet
+ * @author Briguet
+ * @version 1.0
  */
 public enum EMetaType {
     

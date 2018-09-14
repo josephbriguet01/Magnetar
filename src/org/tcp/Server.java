@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, Août 2018
+ * Written by Briguet, August 2018
  */
 package org.tcp;
 
@@ -53,6 +53,28 @@ public class Server extends TCP{
     }
     
     /**
+     * Dévoile la présence du serveur
+     * @param nameServer Correspond au nom du serveur qui sera dévoilé sur le réseau
+     * @param portPropagation Correspond au port de propagation du nom du serveur sur le réseau
+     */
+    public void startPropagation(String nameServer, int portPropagation){
+        if(aus == null){
+            aus = new AuthServer(port, nameServer);
+            aus.startAuthServer(portPropagation);
+        }
+    }
+    
+    /**
+     * Le serveur n'est plus dévoilé sur le réseau
+     */
+    public void stopPropagation(){
+        if(aus != null){
+            aus.stopAuthServer();
+            aus = null;
+        }
+    }
+    
+    /**
      * Lance l'écoute des nouveaux clients et crée des services associés aux nouveaux clients
      * @param encrypt_flux Correspond à la variable qui dit si oui ou non les flux doivent être chiffrée
      */
@@ -67,6 +89,7 @@ public class Server extends TCP{
     public void stop_listening(){
         if(this.ao != null){
             this.ao.stop_listening();
+            stopPropagation();
         }
     }
     
@@ -85,6 +108,7 @@ public class Server extends TCP{
     public void stop_server(){
         if(this.ao != null){
             this.ao.stop_server();
+            stopPropagation();
         }
     }
     
@@ -132,7 +156,7 @@ public class Server extends TCP{
      * Renvoie la liste des identités des clients connectés
      * @return Retourne la liste des identités des clients connectés
      */
-    public synchronized Identity[] getConnectedClient(){
+    public synchronized java.util.List<Identity> getConnectedClient(){
         java.util.List<Service> services = routage_table.getList();
         synchronized(services){
             java.util.List<Identity> tempo = new java.util.ArrayList<>();
@@ -144,11 +168,7 @@ public class Server extends TCP{
                         tempo.add(id);
                     }
                 }
-                Identity[] ids = new Identity[tempo.size()];
-                for(int i=0;i<tempo.size();i++){
-                    ids[i] = tempo.get(i);
-                }
-                return ids;
+                return tempo;
             }
         }
     }
@@ -177,6 +197,10 @@ public class Server extends TCP{
      * Correspond à la classe qui vérifie qi un client à le droit de se connecter
      */
     IConditionATBC      icatbc;
+    /**
+     * Correspond au serveur de propagation de l'identité du serveur
+     */
+    private AuthServer aus;
     // </editor-fold>
     
     

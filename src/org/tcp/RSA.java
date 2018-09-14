@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by BRIGUET, Octobre 2017
+ * Written by BRIGUET, October 2017
  */
 package org.tcp;
 
