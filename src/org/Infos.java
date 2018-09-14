@@ -4,7 +4,7 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, Août 2018
+ * Written by Briguet, August 2018
  */
 package org;
 
@@ -27,7 +27,7 @@ public class Infos {
     /**
      * Correspond à la version du projet
      */
-    public static String SOFT_VERSION = "1.0";
+    public static String SOFT_VERSION = "2.0";
     
     
     

@@ -4,9 +4,13 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, Août 2018
+ * Written by Briguet, August 2018
  */
 package org.tcp;
+
+
+
+import network.IPv4;
 
 
 
@@ -85,24 +89,28 @@ public class AcceptOther extends Thread{
                 //On accepte un client
                 java.net.Socket socket = serverSocket.accept();
                 
-                //On crée les flux d'entrée sortie
-                this.flux = new Flux(socket, encrypt_flux);
+                try{
+                    //On crée les flux d'entrée sortie
+                    this.flux = new Flux(socket, encrypt_flux);
 
-                
-                //Vérifie si les flux doivent être chiffré, si oui flux chiffrera les objets
-                INIT_ENCRYPT();
-                
-                
-                //Les présentation sont faites
-                Identity identity_other = PRESENTATION();
-                
-                
-                //On vérifie qu'il ne s'agit pas de l'identité générique de fermeture d'écoute
-                if(!identity_other.getIdentity().equals(Identity.GENERIC_IDENTITY)){
-                    //Passe la douane
-                    DOUANE(socket, identity_other);
-                }else{
-                    DESTROY_GENERIC_IDENTITY(socket);
+
+                    //Vérifie si les flux doivent être chiffré, si oui flux chiffrera les objets
+                    INIT_ENCRYPT();
+
+
+                    //Les présentation sont faites
+                    Identity identity_other = PRESENTATION();
+
+
+                    //On vérifie qu'il ne s'agit pas de l'identité générique de fermeture d'écoute
+                    if(!identity_other.getIdentity().equals(Identity.GENERIC_IDENTITY)){
+                        //Passe la douane
+                        DOUANE(socket, identity_other);
+                    }else{
+                        DESTROY_GENERIC_IDENTITY(socket);
+                    }
+                }catch(org.tcp.FluxStreamException e){
+                    
                 }
                 
                 
@@ -122,7 +130,7 @@ public class AcceptOther extends Thread{
     protected void stop_listening(){
         listen_client = false;
         this.afterCloseServer = true;
-        new Client(Identity.getInstanceGeneric(), "127.0.0.1", port).connect_to();
+        new Client(Identity.getInstanceGeneric(), new IPv4("127.0.0.1"), port).connect_to();
     }
     
     /**
@@ -137,7 +145,7 @@ public class AcceptOther extends Thread{
      */
     protected void stop_server(){
         listen_client = false;
-        new Client(Identity.getInstanceGeneric(), "127.0.0.1", port).connect_to();
+        new Client(Identity.getInstanceGeneric(), new IPv4("127.0.0.1"), port).connect_to();
         afterCloseServer = false;
         try {
             Thread.sleep(1000);

@@ -4,9 +4,11 @@
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, Août 2018
+ * Written by Briguet, August 2018
  */
 package org.tcp;
+
+import java.util.Arrays;
 
 
 
@@ -25,6 +27,7 @@ public class Identity implements java.io.Serializable{
      */
     public Identity() {
         this.identity = generateChain(15);
+        this.options = new java.util.ArrayList<>();
     }
     
     /**
@@ -32,6 +35,7 @@ public class Identity implements java.io.Serializable{
      */
     private Identity(int generic){
         this.identity = GENERIC_IDENTITY;
+        this.options = new java.util.ArrayList<>();
     }
     // </editor-fold>
 
@@ -50,6 +54,32 @@ public class Identity implements java.io.Serializable{
     
     
     // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS & PROTECTED">
+    /**
+     * Ajoute à la liste les options en paramètre
+     * @param options Correspond à la liste des options
+     */
+    public void addOptions(String... options){
+        this.options.addAll(Arrays.asList(options));
+    }
+    
+    /**
+     * Supprime de la liste les options en paramètre
+     * @param options Correspond à la liste des options
+     */
+    public void removeOptions(String... options){
+        for (String option : options) {
+            this.options.remove(option);
+        }
+    }
+    
+    /**
+     * Renvoie la liste des options de l'identité
+     * @return retourne la liste des options de l'identité
+     */
+    public java.util.List<String> getOptions(){
+        return this.options;
+    }
+    
     /**
      * Redéfinit la méthode toString()
      * @return Retourne le résultat de la méthode
@@ -129,6 +159,10 @@ public class Identity implements java.io.Serializable{
      * Correspond à l'identité sous forme de chaîne de caractères
      */
     private     final   String  identity;
+    /**
+     * Correspond aux éventuelles options de l'identité
+     */
+    private java.util.List<String> options;
     // </editor-fold>
     
     
