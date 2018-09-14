@@ -27,7 +27,7 @@ public class Infos {
     /**
      * Correspond à la version du projet
      */
-    public static String SOFT_VERSION = "1.0";
+    public static String SOFT_VERSION = "2.0";
     
     
     
