@@ -10,10 +10,6 @@ package org.tcp;
 
 
 
-import org.apache.commons.lang.SerializationUtils;
-
-
-
 /**
  * Cette classe permet la création des flux d'entrée/sortie d'une connexion 
  * @author BRIGUET
@@ -130,10 +126,10 @@ public class Flux {
      * Envoie un objet au destinataire à l'autre extrémité du flux
      * @param obj Correspond à l'objet à envoyer
      */
-    protected void      send(Object obj) {
+    protected void send(Object obj) {
         if(encrypt){
             try {
-                sortie.writeObject(this.cryptCode.encrypt(SerializationUtils.serialize((java.io.Serializable) obj)));
+                sortie.writeObject(this.cryptCode.encrypt(Serializer.getData((java.io.Serializable) obj)));
                 sortie.flush();
             } catch (java.io.IOException ex) {
                 throw new org.tcp.SendingException("Error sending trame");
@@ -154,10 +150,10 @@ public class Flux {
      * Reçoit un objet de l'expéditeur à l'autre extrémité du flux
      * @return Retourne l'objet reçu
      */
-    protected Object    receive() {
+    protected Object receive() {
         if(encrypt){
             try {
-                return SerializationUtils.deserialize(this.cryptCode.decrypt((byte[])entree.readObject()));
+                return Serializer.getObject(this.cryptCode.decrypt((byte[])entree.readObject()));
             } catch (java.io.IOException ex) {
                 throw new org.tcp.ReceivingIOException(ex.getMessage(), ex.getCause());
             } catch (ClassNotFoundException ex) {
@@ -184,7 +180,7 @@ public class Flux {
      * Ferme le flux
      * @throws java.io.IOException Correspond à l'exception levée si le flux à un problème de fermeture
      */
-    protected void      closeFlux() throws java.io.IOException{
+    protected void closeFlux() throws java.io.IOException{
         entree.close();
         sortie.flush();
         sortie.close();

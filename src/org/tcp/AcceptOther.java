@@ -385,8 +385,10 @@ public class AcceptOther extends Thread{
     }
     
     private void        WRITE_LOG(Log log){
-        for (ILog list_i_log1 : list_i_log)
-            list_i_log1.readLog(log);
+        try{
+            for (ILog list_i_log1 : list_i_log)
+                list_i_log1.readLog(log);
+        }catch(java.lang.NullPointerException e){ }
     }
     // </editor-fold>
     

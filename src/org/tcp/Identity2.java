@@ -13,6 +13,7 @@ package org.tcp;
 import network.IPCard;
 import network.IPv4;
 import network.MACAddress;
+import network.MaskIPv4;
 import network.Network;
 import network.NetworkCard;
 
@@ -33,13 +34,19 @@ public class Identity2 extends Identity {
      * @param name Correpsond au nom de l'identité
      * @param mac Correspond à l'adresse MAC de l'identité
      * @param publicIP Correspond à l'adresse IP publique de l'identité
+     * @param mainLocalIP Correspond à l'adresse IP principale de l'équipement
+     * @param mainLocalMask Correspond au masque IP principal de l'équipement
+     * @param mainLocalBroadcast Correspond au broadcast principal de l'équipement
      * @param listIP Correspond à la liste des IP de l'identité
      */
-    protected Identity2(String name, MACAddress mac, IPv4 publicIP, java.util.List<IPCard> listIP) {
+    protected Identity2(String name, MACAddress mac, IPv4 publicIP, IPv4 mainLocalIP, MaskIPv4 mainLocalMask, IPv4 mainLocalBroadcast, java.util.List<IPCard> listIP) {
         this.name = name;
         this.mac = mac;
         this.publicIP = publicIP;
         this.listIP = listIP;
+        this.mainLocalIP = mainLocalIP;
+        this.mainLocalMask = mainLocalMask;
+        this.mainLocalBroadcast = mainLocalBroadcast;
     }
     // </editor-fold>
 
@@ -85,6 +92,30 @@ public class Identity2 extends Identity {
     public java.util.List<IPCard> getListIP() {
         return listIP;
     }
+
+    /**
+     * Renvoie l'adresse IP principale locale de l'identité
+     * @return Retourne l'adresse IP principale locale de l'identité
+     */
+    public IPv4 getMainLocalIP() {
+        return mainLocalIP;
+    }
+
+    /**
+     * Renvoie le masque principal local de l'identité
+     * @return Retourne le masque principal local de l'identité
+     */
+    public MaskIPv4 getMainLocalMask() {
+        return mainLocalMask;
+    }
+
+    /**
+     * Renvoie l'adresse broadcast principal local de l'identité
+     * @return Retourne l'adresse broadcast principal local de l'identité
+     */
+    public IPv4 getMainLocalBroadcast() {
+        return mainLocalBroadcast;
+    }
     // </editor-fold>
     
     
@@ -98,7 +129,7 @@ public class Identity2 extends Identity {
     public static Identity2 getInstance(String name){
         NetworkCard nc = getNetworkCard();
         if(nc != null && name != null && name.length() > 0){
-            return new Identity2(name, nc.getMacAddress(), IPv4.getPublicIP(), nc.getIpCards());
+            return new Identity2(name, nc.getMacAddress(), IPv4.getPublicIP(), IPv4.getMainLocalIPv4(), MaskIPv4.getMainLocalMask(), MaskIPv4.getMainLocalBroadcast(), nc.getIpCards());
         }else{
             throw new ErrorIdentityException("NetworkCard cannot is null !");
         }
@@ -144,6 +175,18 @@ public class Identity2 extends Identity {
      * Correspond aux IP de l'identité
      */
     private final java.util.List<IPCard> listIP;
+    /**
+     * Correspond à l'adresse IP principale de l'identité
+     */
+    private final IPv4 mainLocalIP;
+    /**
+     * Correspond au masque IP principale de l'identité
+     */
+    private final MaskIPv4 mainLocalMask;
+    /**
+     * Correspond au broadcast principale de l'identité
+     */
+    private final IPv4 mainLocalBroadcast;
     // </editor-fold>
     
     
