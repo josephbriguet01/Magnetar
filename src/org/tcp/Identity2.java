@@ -10,6 +10,7 @@ package org.tcp;
 
 
 
+import network.BroadcastIPv4;
 import network.IPCard;
 import network.IPv4;
 import network.MACAddress;
@@ -39,7 +40,7 @@ public class Identity2 extends Identity {
      * @param mainLocalBroadcast Correspond au broadcast principal de l'équipement
      * @param listIP Correspond à la liste des IP de l'identité
      */
-    protected Identity2(String name, MACAddress mac, IPv4 publicIP, IPv4 mainLocalIP, MaskIPv4 mainLocalMask, IPv4 mainLocalBroadcast, java.util.List<IPCard> listIP) {
+    protected Identity2(String name, MACAddress mac, IPv4 publicIP, IPv4 mainLocalIP, MaskIPv4 mainLocalMask, BroadcastIPv4 mainLocalBroadcast, java.util.List<IPCard> listIP) {
         this.name = name;
         this.mac = mac;
         this.publicIP = publicIP;
@@ -113,7 +114,7 @@ public class Identity2 extends Identity {
      * Renvoie l'adresse broadcast principal local de l'identité
      * @return Retourne l'adresse broadcast principal local de l'identité
      */
-    public IPv4 getMainLocalBroadcast() {
+    public BroadcastIPv4 getMainLocalBroadcast() {
         return mainLocalBroadcast;
     }
     // </editor-fold>
@@ -129,7 +130,7 @@ public class Identity2 extends Identity {
     public static Identity2 getInstance(String name){
         NetworkCard nc = getNetworkCard();
         if(nc != null && name != null && name.length() > 0){
-            return new Identity2(name, nc.getMacAddress(), IPv4.getPublicIP(), IPv4.getMainLocalIPv4(), MaskIPv4.getMainLocalMask(), MaskIPv4.getMainLocalBroadcast(), nc.getIpCards());
+            return new Identity2(name, nc.getMacAddress(), IPv4.getPublicIP(), IPv4.getMainLocalIPv4(), MaskIPv4.getMainLocalMask(), BroadcastIPv4.getMainLocalBroadcast(), nc.getIpCards());
         }else{
             throw new ErrorIdentityException("NetworkCard cannot is null !");
         }
@@ -186,7 +187,7 @@ public class Identity2 extends Identity {
     /**
      * Correspond au broadcast principale de l'identité
      */
-    private final IPv4 mainLocalBroadcast;
+    private final BroadcastIPv4 mainLocalBroadcast;
     // </editor-fold>
     
     
