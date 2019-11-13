@@ -1,5 +1,5 @@
 ﻿Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
-# Magnetar
+# [Magnetar](https://github.com/josephbriguet01/Magnetar "Accès au projet Git Magnetar")
 
 ### Introduction
 Magnetar est une librairie qui a pour but de simplifier la vie du développeur lorsqu'il s'agit de créer des applications cliente/serveur. Elle se base sur la couche 4 du modèle OSI et plus particulièrement sur le protocole TCP/IP. Magnetar est un protocole situé entre le niveau 5 et 7. Tout dépend de son utilisation. Il gère intégralement le système de dé/connexions clientes, de sessions, de chiffrements des données... Cependant, à l'heure actuelle, il ne contient que le code atomique. Ainsi donc le plus bas niveau du projet. Si le développeur souhaite, ajouter des salons de connexions ou des profils (comme un administrateur), ...,  celui-ci devra se baser sur le code atomique.
