@@ -229,3 +229,5 @@ Et on obtient le résultat suivant:
 ```
 IdentificationServer{ipServer=192.168.0.15, nameServer=Mon Serveur, portServer=15948}
 ```
+
+## Accès au projet GitHub => [ici](https://github.com/josephbriguet01/Magnetar "Accès au projet Git Magnetar")
