@@ -59,6 +59,15 @@ public class Client extends TCP{
     public IPv4 getHost() {
         return new IPv4(host);
     }
+
+    /**
+     * Modifie l'identité du client ou du serveur (Attention: à utiliser avec parcimonie. En effet, il est préférable d'utiliser cette méthode dans le cas où seul le serveur a fait une modification sur l'identité du client et que celle-ci doit être de nouveau poussé au client de manière à ce qu'il soit à jour)
+     * @param identity Correspond à la nouvelle identité
+     */
+    @Override
+    public void setIdentity(Identity identity) {
+        super.setIdentity(identity);
+    }
     // </editor-fold>
 
     

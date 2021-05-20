@@ -223,6 +223,18 @@ public abstract class TCP {
     
     
     
+    // <editor-fold defaultstate="collapsed" desc="METHODE PROTECTED">
+    /**
+     * Modifie l'identité du client ou du serveur
+     * @param identity Correspond à la nouvelle identité
+     */
+    protected void setIdentity(Identity identity){
+        this.identity = identity;
+    }
+    // </editor-fold>
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
     /**
      * Correspond à l'identité du client ou du serveur
