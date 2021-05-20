@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+ *
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * Written by Briguet, August 2018
  */
 package com.jasonpercus.magnetar;
 
@@ -16,6 +19,7 @@ public interface IDiffusionListener {
     
     
     
+    // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS">
     /**
      * Lorsqu'une serveur vient d'être détecté sur le réseau ou au contraire vient de disparaitre
      * @param diffusion Correspond au serveur concerné
@@ -28,6 +32,7 @@ public interface IDiffusionListener {
      * @param diffusion Correspond à la partie récupéré
      */
     public void flux(Diffusion diffusion);
+    // </editor-fold>
     
     
     

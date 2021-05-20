@@ -1,7 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+ *
+ * Unauthorized copying of this file, via any medium is strictly prohibited
+ * Proprietary and confidential
+ *
+ * Written by Briguet, September 2018
  */
 package com.jasonpercus.magnetar;
 
@@ -12,11 +15,20 @@ package com.jasonpercus.magnetar;
  * @author JasonPercus
  * @version 1.0
  */
-public class Diffusion implements java.io.Serializable{
+public class Diffusion implements java.io.Serializable {
     
     
     
-//ATTRIBUTS
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
     /**
      * Correspond à l'adresse ip d'un serveur
      */
@@ -26,10 +38,11 @@ public class Diffusion implements java.io.Serializable{
      * Correspond aux données associées à un serveur
      */
     private Object[] datas;
+    // </editor-fold>
 
     
     
-//CONSTRUCTORS
+    // <editor-fold defaultstate="collapsed" desc="CONSTRUCTORS">
     /**
      * Crée un objet détaillant un serveur dont la présence est ou doit être diffusée sur le réseau
      */
@@ -56,10 +69,11 @@ public class Diffusion implements java.io.Serializable{
         this.ip = ip;
         this.datas = datas;
     }
+    // </editor-fold>
 
     
     
-//METHODES PUBLICS
+    // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS">
     /**
      * Renvoie les données associées à un serveur
      * @return Retourne les données associées à un serveur
@@ -131,6 +145,7 @@ public class Diffusion implements java.io.Serializable{
     public String toString() {
         return ip;
     }
+    // </editor-fold>
     
     
     

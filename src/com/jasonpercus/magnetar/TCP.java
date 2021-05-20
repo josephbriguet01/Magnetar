@@ -16,6 +16,39 @@ package com.jasonpercus.magnetar;
  * @version 1.0
  */
 public abstract class TCP {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à l'identité du client ou du serveur
+     */
+    Identity                        identity;
+    /**
+     * Correspond au port de connexion
+     */
+    int                             port;
+    /**
+     * Correspond à la liste d'interface IReceived
+     */
+    ListSynchronized<IReceived>       list_i_received;
+    /**
+     * Correspond à la liste d'interface IStatut
+     */
+    ListSynchronized<IStatutClient>   list_i_statut;
+    /**
+     * Correspond à la liste d'interface ILog
+     */
+    ListSynchronized<ILog>            list_i_log;
+    /**
+     * Correspond à la table comportant les clients connectés
+     */
+    RoutageTable                    routage_table;
+    /**
+     * Cette variable dit s'il y a une connexion entre le client et le serveur
+     */
+    boolean                         connected;
+    // </editor-fold>
 
     
     
@@ -231,39 +264,6 @@ public abstract class TCP {
     protected void setIdentity(Identity identity){
         this.identity = identity;
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à l'identité du client ou du serveur
-     */
-    Identity                        identity;
-    /**
-     * Correspond au port de connexion
-     */
-    int                             port;
-    /**
-     * Correspond à la liste d'interface IReceived
-     */
-    ListSynchronized<IReceived>       list_i_received;
-    /**
-     * Correspond à la liste d'interface IStatut
-     */
-    ListSynchronized<IStatutClient>   list_i_statut;
-    /**
-     * Correspond à la liste d'interface ILog
-     */
-    ListSynchronized<ILog>            list_i_log;
-    /**
-     * Correspond à la table comportant les clients connectés
-     */
-    RoutageTable                    routage_table;
-    /**
-     * Cette variable dit s'il y a une connexion entre le client et le serveur
-     */
-    boolean                         connected;
     // </editor-fold>
     
     

@@ -15,7 +15,30 @@ package com.jasonpercus.magnetar;
  * @author BRIGUET
  * @version 1.0
  */
-public final class MetaTCP implements java.io.Serializable{
+public final class MetaTCP implements java.io.Serializable {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond au type de trame de controle envoyé
+     */
+    private final EMetaType meta;
+    
+    /**
+     * Correspond à une éventuelle valeur
+     */
+    private final Object   value;
+    // </editor-fold>
 
     
     
@@ -102,19 +125,6 @@ public final class MetaTCP implements java.io.Serializable{
         }
         return java.util.Objects.equals(this.value, other.value);
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond au type de trame de controle envoyé
-     */
-    private final EMetaType meta;
-    /**
-     * Correspond à une éventuelle valeur
-     */
-    private final Object   value;
     // </editor-fold>
     
     

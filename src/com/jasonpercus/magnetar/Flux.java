@@ -22,6 +22,40 @@ import com.jasonpercus.util.Serializer;
  * @version 1.0
  */
 public class Flux {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à l'extrémité émettrice
+     */
+    private final java.io.ObjectOutputStream    sortie;
+    
+    /**
+     * Correspond à l'extrémité réceptrice
+     */
+    private final java.io.ObjectInputStream     entree;
+    
+    /**
+     * Correspond à la variable de volonté de chiffrer le flux
+     */
+    private boolean secured;
+    
+    /**
+     * Correspond à la variable qui dit si le flux est chiffré
+     */
+    private boolean encrypt;
+    
+    /**
+     * Correspond à la clef de dé/chiffrement
+     */
+    private Key key;
+    
+    /**
+     * Correspond au système de dé/chiffrement
+     */
+    private Cipher cipher;
+    // </editor-fold>
 
     
     
@@ -195,35 +229,6 @@ public class Flux {
         sortie.flush();
         sortie.close();
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à l'extrémité émettrice
-     */
-    private final java.io.ObjectOutputStream    sortie;
-    /**
-     * Correspond à l'extrémité réceptrice
-     */
-    private final java.io.ObjectInputStream     entree;
-    /**
-     * Correspond à la variable de volonté de chiffrer le flux
-     */
-    private boolean secured;
-    /**
-     * Correspond à la variable qui dit si le flux est chiffré
-     */
-    private boolean encrypt;
-    /**
-     * Correspond à la clef de dé/chiffrement
-     */
-    private Key key;
-    /**
-     * Correspond au système de dé/chiffrement
-     */
-    private Cipher cipher;
     // </editor-fold>
     
     

@@ -15,7 +15,25 @@ package com.jasonpercus.magnetar;
  * @author BRIGUET
  * @param <E> Correspond à un paramètre de généricité
  */
-public class ListSynchronized<E> implements java.io.Serializable{
+public class ListSynchronized<E> implements java.io.Serializable {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUT">
+    /**
+     * Correspond à la liste des éléments stockés
+     */
+    private final java.util.List<E> list;
+    // </editor-fold>
 
     
     
@@ -139,12 +157,6 @@ public class ListSynchronized<E> implements java.io.Serializable{
     public String toString() {
         return "ListSynchronized{" + "list=" + list + '}';
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUT">
-    private final java.util.List<E> list;
     // </editor-fold>
     
     

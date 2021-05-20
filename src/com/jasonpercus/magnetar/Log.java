@@ -16,6 +16,34 @@ package com.jasonpercus.magnetar;
  * @version 1.0
  */
 public class Log implements java.io.Serializable {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à la date de Log
+     */
+    private java.util.Date date;
+    
+    /**
+     * Correspond à la valeur du Log
+     */
+    private String value;
+    
+    /**
+     * Correspond au tag WARNING, SEVERE... du log permettant de créer des filtres de recherche
+     */
+    private java.util.List<ETAG> tags;
+    // </editor-fold>
 
     
     
@@ -131,23 +159,6 @@ public class Log implements java.io.Serializable {
     public String toString() {
         return date + ": "+value+" -> TAGS"+tags;
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à la date de Log
-     */
-    private java.util.Date date;
-    /**
-     * Correspond à la valeur du Log
-     */
-    private String value;
-    /**
-     * Correspond au tag WARNING, SEVERE... du log permettant de créer des filtres de recherche
-     */
-    private java.util.List<ETAG> tags;
     // </editor-fold>
     
     

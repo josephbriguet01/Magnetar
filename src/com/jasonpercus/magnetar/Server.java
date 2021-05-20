@@ -21,7 +21,41 @@ import static com.jasonpercus.magnetar.Identity.GENERIC_IDENTITY;
  * @author BRIGUET
  * @version 1.0
  */
-public class Server extends TCP{
+public class Server extends TCP {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à la classe qui va écouter l'arrivée des nouveaux clients
+     */
+    private AcceptOther ao;
+    
+    /**
+     * Correspond à la classe qui vérifie qi un client à le droit de se connecter
+     */
+    IConditionATBC      icatbc;
+    
+    /**
+     * Correspond au serveur de diffusion
+     */
+    private ServerDiffusion serveurDiffusion;
+    
+    /**
+     * Correspond à l'objet diffusé
+     */
+    private Diffusion diffusion;
+    
+    /**
+     * Correspond à la classe qui sert de chiffrement
+     */
+    protected final static Class ENCRYPTOR = JPS.class;
+    
+    /**
+     * Correspond à la classe qui sert de chiffrement
+     */
+    protected final static Class ENCRYPTOR_KEY = KeyJPS.class;
+    // </editor-fold>
     
     
     
@@ -424,35 +458,6 @@ public class Server extends TCP{
         
         
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à la classe qui va écouter l'arrivée des nouveaux clients
-     */
-    private AcceptOther ao;
-    /**
-     * Correspond à la classe qui vérifie qi un client à le droit de se connecter
-     */
-    IConditionATBC      icatbc;
-    /**
-     * Correspond au serveur de diffusion
-     */
-    private ServerDiffusion serveurDiffusion;
-    /**
-     * Correspond à l'objet diffusé
-     */
-    private Diffusion diffusion;
-    /**
-     * Correspond à la classe qui sert de chiffrement
-     */
-    protected final static Class ENCRYPTOR = JPS.class;
-    /**
-     * Correspond à la classe qui sert de chiffrement
-     */
-    protected final static Class ENCRYPTOR_KEY = KeyJPS.class;
     // </editor-fold>
     
     

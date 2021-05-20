@@ -8,6 +8,8 @@
  */
 package com.jasonpercus.magnetar;
 
+
+
 import com.jasonpercus.util.Strings;
 
 
@@ -21,7 +23,16 @@ public class SyncTrame implements java.io.Serializable {
     
     
     
-//ATTRIBUTS
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
     /**
      * Correspond à l'id de la trame
      */
@@ -36,10 +47,11 @@ public class SyncTrame implements java.io.Serializable {
      * Correspond à la direction de la trame (-1 = réponse; 1 = question)
      */
     private final int direction;
+    // </editor-fold>
 
     
     
-//CONSTRUCTOR
+    // <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR">
     /**
      * Crée une trame synchrone
      * @param id Correspond à l'id de la trame
@@ -51,10 +63,11 @@ public class SyncTrame implements java.io.Serializable {
         this.object = object;
         this.direction = direction;
     }
+    // </editor-fold>
 
     
     
-//GETTERS
+    // <editor-fold defaultstate="collapsed" desc="GETTERS">
     /**
      * Renvoie l'id de la trame
      * @return Retourne l'id de la trame
@@ -95,10 +108,11 @@ public class SyncTrame implements java.io.Serializable {
     public boolean isResponse(SyncTrame trame){
         return (trame != null && trame.isQuestion() && isResponse() && trame.id.equals(id));
     }
+    // </editor-fold>
     
     
     
-//METHODES PUBLICS STATICS
+    // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS STATICS">
     /**
      * Génère une trame de questionnement
      * @param object Correspond à l'objet envoyé
@@ -117,6 +131,7 @@ public class SyncTrame implements java.io.Serializable {
     public static SyncTrame generateResponse(SyncTrame answer, Object object){
         return new SyncTrame(answer.id, object, -1);
     }
+    // </editor-fold>
     
     
     

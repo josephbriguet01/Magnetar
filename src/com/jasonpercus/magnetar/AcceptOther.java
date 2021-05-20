@@ -22,7 +22,71 @@ import com.jasonpercus.network.IPv4;
  * @author BRIGUET
  * @version 1.0
  */
-public class AcceptOther extends Thread{
+public class AcceptOther extends Thread {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à l'objet TCP utilisé pour communiquer
+     */
+    TCP                             tcp;
+    
+    /**
+     * Correspond au port TCP utilisé
+     */
+    int                             port;
+    
+    /**
+     * Détermine si le serveur doit écouter les nouveaux clients qui viennent d'initialiser une socket
+     */
+    boolean                         listen_client;
+    
+    /**
+     * Détermine si le serveur écoute les nouveaux clients qui viennent d'initialiser une socket
+     */
+    boolean                         listen;
+    
+    /**
+     * Détermine si le serveur et les clients doivent chiffrer leur message
+     */
+    boolean                         encrypt_flux;
+    
+    /**
+     * Correspond à la socket serveur. Celle qui écoute les connexions entrantes
+     */
+    java.net.ServerSocket           serverSocket;
+    
+    /**
+     * Correspond à la table de routage. C'est cette table qui contient toute la liste des clients connectés
+     */
+    RoutageTable                    routage_table;
+    
+    /**
+     * Correspond à la liste des listeners concernant les dé/connexions des clients/serveur
+     */
+    ListSynchronized<IStatutClient> list_i_statut;
+    
+    /**
+     * Correspond à la liste des listeners concernant les réceptions de messages des clients/serveur
+     */
+    ListSynchronized<IReceived>     list_i_received;
+    
+    /**
+     * Correspond à la liste des listeners concernant la redirection des logs du serveur vers le(s) client(s)
+     */
+    ListSynchronized<ILog>          list_i_log;
+    
+    /**
+     * Correspond aux flux entrants/sortants d'une connexion tcp entre un serveur et un client
+     */
+    Flux                            flux;
+    
+    /**
+     * Détermine si à la prochaine connexion d'un client, le serveur doit stopper l'écoute des connexions entrantes
+     */
+    boolean                         afterCloseServer;
+    // </editor-fold>
     
     
     
@@ -58,14 +122,6 @@ public class AcceptOther extends Thread{
     
     
     // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS & PROTECTED">
-    /**
-     * Renvoie si oui ou non le serveur est démarré
-     * @return Retourne true s'il l'est, sinon false
-     */
-    public boolean isStarted() {
-        return started;
-    }
-
     /**
      * Renvoie si oui ou non le serveur écoute les nouveaux clients
      * @return Retourne true, s'il écoute, sinon false
@@ -436,24 +492,6 @@ public class AcceptOther extends Thread{
         }
         return null;
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    TCP                             tcp;
-    int                             port;
-    boolean                         listen_client;
-    boolean                         listen;
-    boolean                         started;
-    boolean                         encrypt_flux;
-    java.net.ServerSocket           serverSocket;
-    RoutageTable                    routage_table;
-    ListSynchronized<IStatutClient> list_i_statut;
-    ListSynchronized<IReceived>     list_i_received;
-    ListSynchronized<ILog>          list_i_log;
-    Flux                            flux;
-    boolean                         afterCloseServer;
     // </editor-fold>
 
 

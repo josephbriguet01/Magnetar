@@ -18,11 +18,11 @@ import com.jasonpercus.network.NetworkCard;
  * @author JasonPercus
  * @version 1.0
  */
-public class ServerDiffusion extends Thread{
+public class ServerDiffusion extends Thread {
 
     
     
-//ATTRIBUTS
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
     /**
      * Correspond au serveur à diffuser
      */
@@ -52,10 +52,11 @@ public class ServerDiffusion extends Thread{
      * Correspond à la taille des paquets UDP
      */
     private final int sizePacket;
+    // </editor-fold>
     
     
     
-//CONSTRUCTORS
+    // <editor-fold defaultstate="collapsed" desc="CONSTRUCTORS">
     /**
      * Crée un serveur de diffusion
      * @param diffusion Correspond au serveur à diffuser
@@ -88,10 +89,11 @@ public class ServerDiffusion extends Thread{
         this.portReceive = portReceive;
         this.sizePacket = sizePacket;
     }
+    // </editor-fold>
 
     
 
-//METHODES PUBLICS
+    // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS">
     /**
      * Renvoie le serveur à diffuser
      * @return Retourne le serveur à diffuser
@@ -147,10 +149,11 @@ public class ServerDiffusion extends Thread{
             udp.stop();
         }
     }
+    // </editor-fold>
     
     
     
-//METHODES PRIVATES
+    // <editor-fold defaultstate="collapsed" desc="METHODES PRIVATES">
     /**
      * Attend time seconde
      * @param time Correpsond au temps d'attente du thread
@@ -180,6 +183,7 @@ public class ServerDiffusion extends Thread{
             return ipCards;
         return null;
     }
+    // </editor-fold>
     
     
     

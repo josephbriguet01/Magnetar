@@ -19,6 +19,7 @@ public enum ETAG {
     
     
     
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS STATICS">
     /**
      * Un client s'est connecté
      */
@@ -75,6 +76,16 @@ public enum ETAG {
      * Le serveur envoie un objet vers un client
      */
     SEND;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
     
     
     

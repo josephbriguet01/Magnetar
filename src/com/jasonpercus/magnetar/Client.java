@@ -22,7 +22,36 @@ import com.jasonpercus.network.IPv4;
  * @author BRIGUET
  * @version 1.0
  */
-public class Client extends TCP{
+public class Client extends TCP {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à l'adresse ip de connexion
+     */
+    private final       String host;
+    
+    /**
+     * Correspond au service qui va se charger de dialoguer avec le serveur
+     */
+    private Service     service;
+    
+    /**
+     * Correspond à l'identité du serveur. Attention = null tant que le connexion au serveur n'a pas été initialisée
+     */
+    private Identity    identity_server;
+    
+    /**
+     * Correspond aux flux entrants/sortants de la connexion tcp du client vers le serveur
+     */
+    private Flux        flux;
+    
+    /**
+     * Correspond au listener qui préviendra si la connexion d'un client est autorisée/refusée par le serveur
+     */
+    private IResultATBC iratbc;
+    // </editor-fold>
 
 
 
@@ -400,16 +429,6 @@ public class Client extends TCP{
         
         
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    private final       String host;
-    private Service     service;
-    private Identity    identity_server;
-    private Flux        flux;
-    IResultATBC         iratbc;
     // </editor-fold>
     
     
