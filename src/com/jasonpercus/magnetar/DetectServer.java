@@ -26,15 +26,16 @@ public class DetectServer {
 
     
     
-//CONSTANTES
+    // <editor-fold defaultstate="collapsed" desc="CONSTANTE">
     /**
      * Correspond au nombre de seconde que doit attendre Service pour considérer qu'un HOST a arrêté de diffuser un serveur
      */
     public static int nombreScondeAvantSuppression = 5;
+    // </editor-fold>
     
     
     
-//ATTRIBUTS
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
     /**
      * Correspond au client UDP qui va recevoir les diffusions
      */
@@ -74,10 +75,11 @@ public class DetectServer {
      * Correspond à la taille des paquets UDP
      */
     private final int sizePacket;
+    // </editor-fold>
 
     
     
-//CONSTRUCTORS
+    // <editor-fold defaultstate="collapsed" desc="CONSTRUCTORS">
     /**
      * Crée un client qui va écouter les diffusions de serveurs
      * @param portSend Correspond au port d'envoi UDP
@@ -120,10 +122,11 @@ public class DetectServer {
         this.portReceive = portReceive;
         this.sizePacket = sizePacket;
     }
+    // </editor-fold>
     
     
     
-//METHODES PUBLICS
+    // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS">
     /**
      * Modifie l'objet listener qui écoutera les nouvelles diffusions
      * @param listener Correspond au nouveau listener
@@ -180,10 +183,11 @@ public class DetectServer {
             }
         }
     }
+    // </editor-fold>
     
     
     
-//METHODE PRIVATE
+    // <editor-fold defaultstate="collapsed" desc="METHODES PRIVATES">
     /**
      * Renvoie la liste des ips du système
      * @return Retourne la liste des ips du système
@@ -268,10 +272,11 @@ public class DetectServer {
             }
         });
     }
+    // </editor-fold>
     
     
     
-//CLASS
+    // <editor-fold defaultstate="collapsed" desc="CLASS">
     /**
      * Cette classe représente une diffusion associée à un temps en secondes depuis lequel la dernière même diffusion à été reçu
      * @author JasonPercus
@@ -281,7 +286,7 @@ public class DetectServer {
         
         
         
-    //ATTRIBUTS
+        // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
         /**
          * Correspond à un élément de diffusion
          */
@@ -291,10 +296,11 @@ public class DetectServer {
          * Correspond au temps passé depuis la dernière diffusion de ce même élement
          */
         private int time;
+        // </editor-fold>
 
         
         
-    //CONSTRUCTOR
+        // <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR">
         /**
          * Crée un objet Element
          * @param partie Correspond à un serveur diffusé
@@ -303,10 +309,11 @@ public class DetectServer {
             this.partie = partie;
             this.time = 0;
         }
+        // </editor-fold>
         
         
         
-    //METHODES PUBLICS
+        // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS">
         /**
          * Renvoie le temps passé depuis la dernière diffusion de ce même élement
          * @return Retourne le temps passé depuis la dernière diffusion de ce même élement
@@ -359,6 +366,7 @@ public class DetectServer {
             final Element other = (Element) obj;
             return java.util.Objects.equals(this.partie, other.partie);
         }
+        // </editor-fold>
         
         
         
@@ -373,7 +381,7 @@ public class DetectServer {
         
         
         
-    //ATTRIBUTS
+        // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
         /**
          * Détermine si oui ou non le thread est en activité
          */
@@ -383,10 +391,11 @@ public class DetectServer {
          * Correspond à un élément de diffusion avec un temps (ce temps va s'incrémenter jusqu'à 5 secondes à moins de recevoir une nouvelle diffusion)
          */
         private final Element element;
+        // </editor-fold>
 
         
         
-    //CONSTRUCTOR
+        // <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR">
         /**
          * Crée un service
          * @param element Correspond à un élement de diffusion
@@ -395,10 +404,11 @@ public class DetectServer {
             this.element = element;
             this.run = true;
         }
+        // </editor-fold>
         
         
         
-    //METHODE PUBLIC
+        // <editor-fold defaultstate="collapsed" desc="METHODES PUBLICS">
         /**
          * Vérifie que le serveur HOST continue de diffuser
          */
@@ -429,10 +439,12 @@ public class DetectServer {
         public void forceStop(){
             this.run = false;
         }
+        // </editor-fold>
         
         
         
     }
+    // </editor-fold>
     
     
     

@@ -24,6 +24,68 @@ import com.jasonpercus.util.Serializer;
  */
 public class UDP {
     
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS STATICS PUBLICS">
+    /**
+     * Cette variable définit l'état d'un paquet OK
+     */
+    public static int STATUT_PACKET_OK = 0;
+    /**
+     * Cette variable définit l'état d'un paquet malformé
+     */
+    public static int STATUT_PACKET_MALFORMED = 1;
+    /**
+     * Cette variable définit l'état d'un paquet ayant une erreur de décryptage
+     */
+    public static int STATUT_ERROR_DECRYPT = 2;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à la variable qui définit la taille des paquets sur le réseau
+     */
+    private final int lengthPacket;
+    /**
+     * Correspond au port d'entrée/sortie de l'objet
+     */
+    private final int myPort;
+    /**
+     * Correspond au port d'entrée/sortie du destinataire
+     */
+    private final int receiverPort;
+    /**
+     * Correspond à l'adresse IP de destination
+     */
+    private IPv4 receiverIPv4;
+    /**
+     * Correspond à un objet DatagramSocket
+     */
+    private java.net.DatagramSocket ds;
+    /**
+     * Correspond au thread qui écoute les trames entrante sur le réseau
+     */
+    private UDPClientServerThread ust;
+    /**
+     * Si cette variable est à true, on continue d'écouter les trame entrante
+     */
+    private boolean run;
+    /**
+     * Correspond à la classe de dé/chiffrement
+     */
+    private Cipher cipher;
+    /**
+     * Correspond à la clef de dé/chiffrement
+     */
+    private Key key;
+    /**
+     * Correspond à la liste des listeners
+     */
+    private final ListSynchronized<IReceivedUDP> list_i_received;
+    // </editor-fold>
+    
 
     
     // <editor-fold defaultstate="collapsed" desc="CONSTRUCTOR">
@@ -242,68 +304,6 @@ public class UDP {
             }
         }
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS STATICS PUBLICS">
-    /**
-     * Cette variable définit l'état d'un paquet OK
-     */
-    public static int STATUT_PACKET_OK = 0;
-    /**
-     * Cette variable définit l'état d'un paquet malformé
-     */
-    public static int STATUT_PACKET_MALFORMED = 1;
-    /**
-     * Cette variable définit l'état d'un paquet ayant une erreur de décryptage
-     */
-    public static int STATUT_ERROR_DECRYPT = 2;
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à la variable qui définit la taille des paquets sur le réseau
-     */
-    private final int lengthPacket;
-    /**
-     * Correspond au port d'entrée/sortie de l'objet
-     */
-    private final int myPort;
-    /**
-     * Correspond au port d'entrée/sortie du destinataire
-     */
-    private final int receiverPort;
-    /**
-     * Correspond à l'adresse IP de destination
-     */
-    private IPv4 receiverIPv4;
-    /**
-     * Correspond à un objet DatagramSocket
-     */
-    private java.net.DatagramSocket ds;
-    /**
-     * Correspond au thread qui écoute les trames entrante sur le réseau
-     */
-    private UDPClientServerThread ust;
-    /**
-     * Si cette variable est à true, on continue d'écouter les trame entrante
-     */
-    private boolean run;
-    /**
-     * Correspond à la classe de dé/chiffrement
-     */
-    private Cipher cipher;
-    /**
-     * Correspond à la clef de dé/chiffrement
-     */
-    private Key key;
-    /**
-     * Correspond à la liste des listeners
-     */
-    private final ListSynchronized<IReceivedUDP> list_i_received;
     // </editor-fold>
     
     

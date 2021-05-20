@@ -16,6 +16,29 @@ package com.jasonpercus.magnetar;
  * @version 1.0
  */
 public abstract class BAWList implements java.io.Serializable, IConditionATBC {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à la liste des éléments BAW
+     */
+    final java.util.List<BAWElement> list;
+    
+    /**
+     * Correspond à la classe qui vérifiera après la BAWList que le client à le droit de se connecter
+     */
+    transient IConditionATBC icatbc;
+    // </editor-fold>
 
     
     
@@ -158,19 +181,6 @@ public abstract class BAWList implements java.io.Serializable, IConditionATBC {
      * @return Retourne si oui ou non l'identité du client a le droit de se connecter au serveur
      */
     public abstract int authorizeOrNot(Identity identity);
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUT">
-    /**
-     * Correspond à la liste des éléments BAW
-     */
-    final java.util.List<BAWElement> list;
-    /**
-     * Correspond à la classe qui vérifiera après la BAWList que le client à le droit de se connecter
-     */
-    transient IConditionATBC icatbc;
     // </editor-fold>
     
     

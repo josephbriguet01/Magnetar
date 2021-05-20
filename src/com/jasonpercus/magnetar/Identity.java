@@ -19,7 +19,45 @@ import com.jasonpercus.util.Strings;
  * @author BRIGUET
  * @version 1.0
  */
-public class Identity implements java.io.Serializable{
+public class Identity implements java.io.Serializable {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à l'identité générique de déconnexion
+     */
+    protected   static  String  GENERIC_IDENTITY    = "GENERIC";
+    
+    /**
+     * Correspond à l'identité générique de déconnexion
+     */
+    protected   static  String  BROADCAST_IDENTITY  = "BROADCAST";
+    
+    /**
+     * Correspond à l'identité sous forme de chaîne de caractères
+     */
+    private     final   String  identity;
+    
+    /**
+     * Correspond aux éventuelles options de l'identité
+     */
+    private     final   java.util.List<String> options;
+    
+    /**
+     * Détermine s'il s'agit dun serveur ou d'un client qui utilise actuellement l'identity: 0 = serveur; 1 = client
+     */
+    private             int     clientOrServer;
+    // </editor-fold>
 
     
     
@@ -166,31 +204,6 @@ public class Identity implements java.io.Serializable{
     protected void setClientOrServer(int clientOrServer){
         this.clientOrServer = clientOrServer;
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à l'identité générique de déconnexion
-     */
-    protected   static  String  GENERIC_IDENTITY    = "GENERIC";
-    /**
-     * Correspond à l'identité générique de déconnexion
-     */
-    protected   static  String  BROADCAST_IDENTITY  = "BROADCAST";
-    /**
-     * Correspond à l'identité sous forme de chaîne de caractères
-     */
-    private     final   String  identity;
-    /**
-     * Correspond aux éventuelles options de l'identité
-     */
-    private     final   java.util.List<String> options;
-    /**
-     * Détermine s'il s'agit dun serveur ou d'un client qui utilise actuellement l'identity: 0 = serveur; 1 = client
-     */
-    private             int     clientOrServer;
     // </editor-fold>
     
     

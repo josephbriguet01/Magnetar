@@ -16,16 +16,28 @@ package com.jasonpercus.magnetar;
  * @version 1.0
  */
 public class BlackList extends BAWList {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
 
     
     
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUT STATIC">
     /**
      * Cette variable détermine que le client a été refusé de connexion car il fait partie de la Blacklist
      */
     public static int REFUSED = 102;
+    // </editor-fold>
     
     
     
+    // <editor-fold defaultstate="collapsed" desc="METHODE PUBLIC">
     /**
      * Renvoie 0 si le client ne fait pas partie de la Blacklist, sinon 101
      * @param identity Correspond à l'identité dont on veut vérifier si oui ou non elle a le droit de se connecter au serveur
@@ -44,6 +56,7 @@ public class BlackList extends BAWList {
             return 0;
         }
     }
+    // </editor-fold>
     
     
     

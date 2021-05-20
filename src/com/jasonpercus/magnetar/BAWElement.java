@@ -20,6 +20,29 @@ import com.jasonpercus.network.MACAddress;
  * @version 1.0
  */
 public class BAWElement implements java.io.Serializable, Cloneable {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à la date de création de l'élément BAW
+     */
+    private java.util.Date date;
+    
+    /**
+     * Correspond à l'adresse MAC de l'élément
+     */
+    private MACAddress mac;
+    // </editor-fold>
 
     
     
@@ -129,19 +152,6 @@ public class BAWElement implements java.io.Serializable, Cloneable {
     public String toString() {
         return "BAWElement(" + date + ": " + mac + ')';
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond à la date de création de l'élément BAW
-     */
-    private java.util.Date date;
-    /**
-     * Correspond à l'adresse MAC de l'élément
-     */
-    private MACAddress mac;
     // </editor-fold>
     
     

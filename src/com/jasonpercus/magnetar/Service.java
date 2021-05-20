@@ -8,6 +8,8 @@
  */
 package com.jasonpercus.magnetar;
 
+
+
 import com.jasonpercus.util.Strings;
 
 
@@ -17,7 +19,71 @@ import com.jasonpercus.util.Strings;
  * @author BRIGUET
  * @version 1.0
  */
-public class Service extends Thread{
+public class Service extends Thread {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond à l'objet TCP utilisé pour communiquer
+     */
+    TCP                             tcp;
+    
+    /**
+     * Correspond à l'identité (client ou serveur) de celui qui communique avec ce service
+     */
+    Identity                        identity_other;
+    
+    /**
+     * Correspond à la socket de ce service
+     */
+    java.net.Socket                 socket;
+    
+    /**
+     * Correspond aux flux entrants/sortants de la socket de ce service
+     */
+    Flux                            flux;
+    
+    /**
+     * Détermine si le service doit continuer d'écouter et analyser les messages venant de celui qui communique avec ce service
+     */
+    boolean                         run_process;
+    
+    /**
+     * Détermine si les logs doivent être redirigés
+     */
+    boolean                         redirect_log;
+    
+    /**
+     * Correspond à la liste des listeners concernant les dé/connexions des clients/serveur
+     */
+    ListSynchronized<IStatutClient> list_i_statut;
+    
+    /**
+     * Correspond à la liste des listeners concernant les réceptions de messages des clients/serveur
+     */
+    ListSynchronized<IReceived>     list_i_received;
+    
+    /**
+     * Correspond à la liste des listeners concernant la redirection des logs du serveur vers le(s) client(s)
+     */
+    ListSynchronized<ILog>          list_i_log;
+    
+    /**
+     * Correspond à l'id unique de ce service
+     */
+    private final String            id;
+    
+    /**
+     * Correspond à la raison de la déconnexion entre le service client et le service serveur. Il est null tant que la connexion est active
+     */
+    private EDisconnectReason       reason;
+    
+    /**
+     * Correspond à la table de routage. C'est cette table qui contient toute la liste des clients connectés
+     */
+    private final RoutageTable      routage_table;
+    // </editor-fold>
 
     
     
@@ -431,23 +497,6 @@ public class Service extends Thread{
             return false;
         }
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    TCP                             tcp;
-    Identity                        identity_other;
-    java.net.Socket                 socket;
-    Flux                            flux;
-    boolean                         run_process;
-    boolean                         redirect_log;
-    ListSynchronized<IReceived>     list_i_received;
-    ListSynchronized<IStatutClient> list_i_statut;
-    ListSynchronized<ILog>          list_i_log;
-    private final String            id;
-    private EDisconnectReason       reason;
-    private final RoutageTable      routage_table;
     // </editor-fold>
     
     

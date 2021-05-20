@@ -29,6 +29,54 @@ import com.jasonpercus.util.thread.TimedResult;
  * @version 1.0
  */
 public class Identity2 extends Identity {
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="SERIAL_VERSION_UID">
+    /**
+     * Correspond au numéro de série qui identifie le type de dé/sérialization utilisé pour l'objet
+     */
+    private static final long serialVersionUID = 1L;
+    // </editor-fold>
+    
+    
+    
+    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
+    /**
+     * Correspond au nom de l'identité
+     */
+    private String name;
+    
+    /**
+     * Correspond à l'adresse MAC de l'identité
+     */
+    private final MACAddress mac;
+    
+    /**
+     * Correspond à l'adresse IP publique de l'identité
+     */
+    private final IPv4 publicIP;
+    
+    /**
+     * Correspond aux IP de l'identité
+     */
+    private final java.util.List<IPCard> listIP;
+    
+    /**
+     * Correspond à l'adresse IP principale de l'identité
+     */
+    private final IPv4 mainLocalIP;
+    
+    /**
+     * Correspond au masque IP principale de l'identité
+     */
+    private final MaskIPv4 mainLocalMask;
+    
+    /**
+     * Correspond au broadcast principale de l'identité
+     */
+    private final BroadcastIPv4 mainLocalBroadcast;
+    // </editor-fold>
 
     
     
@@ -187,39 +235,6 @@ public class Identity2 extends Identity {
         }
         return null;
     }
-    // </editor-fold>
-    
-    
-    
-    // <editor-fold defaultstate="collapsed" desc="ATTRIBUTS">
-    /**
-     * Correspond au nom de l'identité
-     */
-    private String name;
-    /**
-     * Correspond à l'adresse MAC de l'identité
-     */
-    private final MACAddress mac;
-    /**
-     * Correspond à l'adresse IP publique de l'identité
-     */
-    private final IPv4 publicIP;
-    /**
-     * Correspond aux IP de l'identité
-     */
-    private final java.util.List<IPCard> listIP;
-    /**
-     * Correspond à l'adresse IP principale de l'identité
-     */
-    private final IPv4 mainLocalIP;
-    /**
-     * Correspond au masque IP principale de l'identité
-     */
-    private final MaskIPv4 mainLocalMask;
-    /**
-     * Correspond au broadcast principale de l'identité
-     */
-    private final BroadcastIPv4 mainLocalBroadcast;
     // </editor-fold>
     
     
