@@ -279,15 +279,23 @@ public class Service extends Thread {
      * Prévient le serveur qu'un nouveau client vient de se connecter
      * @param new_client Correspond au nom du nouveau client
      */
-    @SuppressWarnings({"SynchronizeOnNonFinalField", "NestedSynchronizedStatement"})
+    @SuppressWarnings({"SynchronizeOnNonFinalField", "NestedSynchronizedStatement", "Convert2Lambda"})
     private synchronized void NEW_CLIENT_HAS_CONNECTED(Identity new_client){
         synchronized(list_i_statut){
             //Affiche qu'un client s'est connecté
             int size = list_i_statut.size();
-            for(int i=0;i<size;i++){
-                IStatutClient list_i_statut1 = list_i_statut.get(i);
-                if(list_i_statut1 != null)
-                    list_i_statut1.hasConnected(new_client);
+            if(size > 0){
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for(int i=0;i<size;i++){
+                            IStatutClient list_i_statut1 = list_i_statut.get(i);
+                            if(list_i_statut1 != null){
+                                list_i_statut1.hasConnected(new_client);
+                            }
+                        }
+                    }
+                }).start();
             }
         }
         
@@ -416,7 +424,11 @@ public class Service extends Thread {
                                 }
                             }
                         }else{
-                            list_i_received.get(i).received(identity_other, receivedTrame);
+                            IReceived receiver = list_i_received.get(i);
+                            if((receiver instanceof Client.Receiver || receiver instanceof Server.Receiver) && !redirected){
+                                receiver.received(identity_other, receivedTrame);
+                                redirected = true;
+                            }
                         }
                     }else{
                         list_i_received.get(i).received(identity_other, receivedTrame);
