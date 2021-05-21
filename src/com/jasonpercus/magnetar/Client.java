@@ -371,7 +371,7 @@ public class Client extends TCP {
      * @author BRIGUET
      * @version 1.0
      */
-    private abstract class Receiver implements IReceived, IStatutClient {
+    protected abstract class Receiver implements IReceived, IStatutClient {
         
         
         
