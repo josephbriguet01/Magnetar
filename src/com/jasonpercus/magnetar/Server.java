@@ -13,6 +13,7 @@ package com.jasonpercus.magnetar;
 import com.jasonpercus.encryption.jps.JPS;
 import com.jasonpercus.encryption.jps.KeyJPS;
 import static com.jasonpercus.magnetar.Identity.GENERIC_IDENTITY;
+import static com.jasonpercus.util.OS.IS_ANDROID;
 
 
 
@@ -205,28 +206,38 @@ public class Server extends TCP {
      */
     @SuppressWarnings("SynchronizeOnNonFinalField")
     public void send(final Identity receiver, final Object obj){
-        try{
-            if(receiver.getIdentity().equals(Identity.BROADCAST_IDENTITY)){
-                synchronized(routage_table){
-                    int size = routage_table.size();
-                    for(int i=0;i<size;i++){
-                        routage_table.get(i).getFlux().send(obj);
-                    }
-                }
-            }else{
-                synchronized(routage_table){
-                    int size = routage_table.size();
-                    for(int i=0;i<size;i++){
-                        if(routage_table.get(i).getIdentity_other().equals(receiver)){
-                            routage_table.get(i).getFlux().send(obj);
-                            break;
+        @SuppressWarnings("Convert2Lambda")
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    if(receiver.getIdentity().equals(Identity.BROADCAST_IDENTITY)){
+                        synchronized(routage_table){
+                            int size = routage_table.size();
+                            for(int i=0;i<size;i++){
+                                routage_table.get(i).getFlux().send(obj);
+                            }
+                        }
+                    }else{
+                        synchronized(routage_table){
+                            int size = routage_table.size();
+                            for(int i=0;i<size;i++){
+                                if(routage_table.get(i).getIdentity_other().equals(receiver)){
+                                    routage_table.get(i).getFlux().send(obj);
+                                    break;
+                                }
+                            }
                         }
                     }
+                }catch(java.lang.NullPointerException | SendingException e){
+
                 }
             }
-        }catch(java.lang.NullPointerException | SendingException e){
-            
-        }
+        };
+        if(IS_ANDROID)
+            new Thread(runnable).start();
+        else
+            runnable.run();
     }
     
     /**
