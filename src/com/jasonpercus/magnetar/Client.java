@@ -14,6 +14,7 @@ import com.jasonpercus.encryption.Cipher;
 import com.jasonpercus.encryption.Key;
 import com.jasonpercus.encryption.rsa.RSA;
 import com.jasonpercus.network.IPv4;
+import static com.jasonpercus.util.OS.IS_ANDROID;
 
 
 
@@ -173,15 +174,25 @@ public class Client extends TCP {
      * @param obj Correspond à l'objet à envoyer (Il doit être serialisable)
      */
     public void send(Object obj){
-        if(this.connected){
-            try{
-                service.getFlux().send(obj);
-            }catch(java.lang.NullPointerException ex){
-                throw new ErrorConnectionException("No Connection");
+        @SuppressWarnings("Convert2Lambda")
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if(Client.this.connected){
+                    try{
+                        service.getFlux().send(obj);
+                    }catch(java.lang.NullPointerException ex){
+                        throw new ErrorConnectionException("No Connection");
+                    }
+                }else{
+                    throw new ErrorConnectionException("You are not connected");
+                }
             }
-        }else{
-            throw new ErrorConnectionException("You are not connected");
-        }
+        };
+        if(IS_ANDROID)
+            new Thread(runnable).start();
+        else
+            runnable.run();
     }
     
     /**
