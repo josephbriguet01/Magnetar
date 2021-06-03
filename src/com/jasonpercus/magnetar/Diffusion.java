@@ -1,10 +1,10 @@
 /*
- * Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+ * Copyright (C) JasonPercus Systems, Inc - All Rights Reserved
  *
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, September 2018
+ * Written by JasonPercus, August 2018
  */
 package com.jasonpercus.magnetar;
 

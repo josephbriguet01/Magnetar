@@ -1,10 +1,10 @@
 /*
- * Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+ * Copyright (C) JasonPercus Systems, Inc - All Rights Reserved
  *
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, August 2018
+ * Written by JasonPercus, August 2018
  */
 package com.jasonpercus.magnetar;
 
@@ -12,7 +12,7 @@ package com.jasonpercus.magnetar;
 
 /**
  * Cette classe permet de lister les raisons de déconnexion d'un client ou d'un serveur. Un objet EDisconnectReason est envoyé au client et au serveur dans la méthode hasDisconnected().
- * @author BRIGUET
+ * @author JasonPercus
  * @version 1.0
  */
 public enum EDisconnectReason {
