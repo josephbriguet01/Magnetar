@@ -1,10 +1,10 @@
 /*
- * Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+ * Copyright (C) JasonPercus Systems, Inc - All Rights Reserved
  *
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, September 2018
+ * Written by JasonPercus, August 2018
  */
 package com.jasonpercus.magnetar;
 
@@ -12,7 +12,7 @@ package com.jasonpercus.magnetar;
 
 /**
  * Cette classe permet de déterminer si oui ou non un client à le droit de se connecter. Il s'agit d'une classe abstraite qui est étendue par la whitelist et la blacklist
- * @author Briguet
+ * @author JasonPercus
  * @version 1.0
  */
 public abstract class BAWList implements java.io.Serializable, IConditionATBC {

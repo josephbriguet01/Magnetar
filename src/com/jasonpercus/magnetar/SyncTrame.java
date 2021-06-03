@@ -1,10 +1,10 @@
 /*
- * Copyright (C) BRIGUET Systems, Inc - All Rights Reserved
+ * Copyright (C) JasonPercus Systems, Inc - All Rights Reserved
  *
  * Unauthorized copying of this file, via any medium is strictly prohibited
  * Proprietary and confidential
  *
- * Written by Briguet, December 2020
+ * Written by JasonPercus, August 2018
  */
 package com.jasonpercus.magnetar;
 
@@ -16,7 +16,7 @@ import com.jasonpercus.util.Strings;
 
 /**
  * Cette classe permet de créer un objet unique sur le réseau correspondant à une demande synchrone et à sa réponse
- * @author BRIGUET
+ * @author JasonPercus
  * @version 1.0
  */
 public class SyncTrame implements java.io.Serializable {
